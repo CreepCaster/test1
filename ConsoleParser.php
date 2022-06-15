@@ -13,12 +13,12 @@ class ConsoleParser
      *
      * @return void
      */
-    public function register(Command $command)
+    public function register(Command $command): void
     {
         $this->commands[$command->name] = $command;
     }
 
-    public function parse($allArgumentsAndOptions)
+    public function parse($allArgumentsAndOptions): void
     {
         array_shift($allArgumentsAndOptions);
         $name = array_shift($allArgumentsAndOptions);
@@ -42,7 +42,11 @@ class ConsoleParser
         $this->commands[$name]->call($arguments, $options);
     }
 
-    public function printAll()
+    /**
+     * Вывести список всех комманд с описанием
+     * @return void
+     */
+    public function printAll(): void
     {
         foreach ($this->commands as $command) {
             echo "\033[1m{$command->name}\033[0m: {$command->description}\n";

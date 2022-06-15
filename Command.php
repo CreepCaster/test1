@@ -20,9 +20,9 @@ class Command
      *
      * @return void
      */
-    function call(array $arguments = [], array $options = [])
+    public function call(array $arguments = [], array $options = []): void
     {
-        if (in_array('help', $arguments)) {
+        if (in_array('help', $arguments, true)) {
             echo "$this->description\n";
             return;
         }
